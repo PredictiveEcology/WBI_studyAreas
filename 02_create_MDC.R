@@ -14,27 +14,42 @@ mdc_wb1 <- lapply(c(provs, "Yukon", paste(wb3, collapse = " & ")), function(x) {
   mdc1 <- makeMDC(inputPath = dir1, years = 1991:2019)
   writeRaster(mdc1, file.path("studyAreas/data", paste0("MDC_historic_1991-2019_", x, ".grd")), overwrite = TRUE)
 
-  message("Processing projected (RCP 4.5) MDC rasters for study area: ", x)
-  dir2 <- file.path(climateDataDir, "future_2011-2100", "CCSM4_RCP45", x)
+  message("Processing projected (SSP2-4.5) MDC rasters for study area: ", x)
+  dir2 <- file.path(climateDataDir, "future_2011-2100", "CanESM5_ssp245", x)
   mdc2 <- makeMDC(inputPath = dir2, years = 2011:2100)
-  writeRaster(mdc2, file.path("studyAreas/data", paste0("MDC_CCSM4_RCP45_", x, ".grd")), overwrite = TRUE)
+  writeRaster(mdc2, file.path("studyAreas/data", paste0("MDC_CanESM5_ssp245_", x, ".grd")), overwrite = TRUE)
 
-  message("Processing projected (RCP 8.5) MDC rasters for study area: ", x)
-  dir3 <- file.path(climateDataDir, "future_2011-2100", "CCSM4_RCP85", x)
+  message("Processing projected (SSP3-7.0) MDC rasters for study area: ", x)
+  dir3 <- file.path(climateDataDir, "future_2011-2100", "CanESM5_ssp370", x)
   mdc3 <- makeMDC(inputPath = dir3, years = 2011:2100)
-  writeRaster(mdc3, file.path("studyAreas/data", paste0("MDC_CCSM4_RCP85_", x, ".grd")), overwrite = TRUE)
+  writeRaster(mdc2, file.path("studyAreas/data", paste0("MDC_CanESM5_ssp370_", x, ".grd")), overwrite = TRUE)
+
+  message("Processing projected (SSP5-8.5) MDC rasters for study area: ", x)
+  dir4 <- file.path(climateDataDir, "future_2011-2100", "CanESM5_ssp585", x)
+  mdc4 <- makeMDC(inputPath = dir4, years = 2011:2100)
+  writeRaster(mdc4, file.path("studyAreas/data", paste0("MDC_CanESM5_ssp585_", x, ".grd")), overwrite = TRUE)
 })
 
 # Ontario -------------------------------------------------------------------------------------
 
-dir1 <- file.path(climateDataDir, "historic_1991-2019", "Ontario")
-mdc1 <- makeMDC(inputPath = dir1, years = 1991:2019)
-writeRaster(mdc1, file.path("studyAreas/data", paste0("MDC_historic_1991-2019_", "Ontario", ".grd")), overwrite = TRUE)
+mdc_wb1 <- lapply("Ontario", function(x) {
+  message("Processing historic MDC rasters for study area: ", x)
+  dir1 <- file.path(climateDataDir, "historic_1991-2019", x)
+  mdc1 <- makeMDC(inputPath = dir1, years = 1991:2019)
+  writeRaster(mdc1, file.path("studyAreas/data", paste0("MDC_historic_1991-2019_", x, ".grd")), overwrite = TRUE)
 
-dir2 <- file.path(climateDataDir, "future_2011-2100", "CCSM4_RCP45", "Ontario")
-mdc2 <- makeMDC(inputPath = dir2, years = 2011:2100)
-writeRaster(mdc2, file.path("studyAreas/data", paste0("MDC_CCSM4_RCP45_", "Ontario", ".grd")), overwrite = TRUE)
+  message("Processing projected (SSP2-4.5) MDC rasters for study area: ", x)
+  dir2 <- file.path(climateDataDir, "future_2011-2100", "CanESM5_ssp245", x)
+  mdc2 <- makeMDC(inputPath = dir2, years = 2011:2100)
+  writeRaster(mdc2, file.path("studyAreas/data", paste0("MDC_CanESM5_ssp245_", x, ".grd")), overwrite = TRUE)
 
-dir3 <- file.path(climateDataDir, "future_2011-2100", "CCSM4_RCP85", "Ontario")
-mdc3 <- makeMDC(inputPath = dir3, years = 2011:2100)
-writeRaster(mdc3, file.path("studyAreas/data", paste0("MDC_CCSM4_RCP85_", "Ontario", ".grd")), overwrite = TRUE)
+  message("Processing projected (SSP3-7.0) MDC rasters for study area: ", x)
+  dir3 <- file.path(climateDataDir, "future_2011-2100", "CanESM5_ssp370", x)
+  mdc3 <- makeMDC(inputPath = dir3, years = 2011:2100)
+  writeRaster(mdc2, file.path("studyAreas/data", paste0("MDC_CanESM5_ssp370_", x, ".grd")), overwrite = TRUE)
+
+  message("Processing projected (SSP5-8.5) MDC rasters for study area: ", x)
+  dir4 <- file.path(climateDataDir, "future_2011-2100", "CanESM5_ssp585", x)
+  mdc4 <- makeMDC(inputPath = dir4, years = 2011:2100)
+  writeRaster(mdc4, file.path("studyAreas/data", paste0("MDC_CanESM5_ssp585_", x, ".grd")), overwrite = TRUE)
+})
