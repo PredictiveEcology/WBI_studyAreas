@@ -1,5 +1,5 @@
 # source("studyAreas/WBI_RIA.R")
-# source("studyAreas/WBI_MPB.R")
+# source("studyAreas/WBI_insect_disturbance.R")
 # source("studyAreas/WBI_SBW.R")
 # source("studyAreas/caribou_metaherds.R")
 
@@ -36,8 +36,8 @@ gg_all <- ggplot(provsWB[-which(provsWB$NAME_1 == "Nunavut"), ]) +
   ggtitle("Western Boreal Initiative Study Areas") +
   geom_sf(data = st_as_sf(studyArea), fill = "grey", colour = "black", alpha = alpha) +
   geom_sf(data = bcr6_nt1, fill = cols[1], colour = cols[1], alpha = alpha) +
-  geom_sf(data = studyAreaMPB, fill = cols[4], colour = cols[4], alpha = alpha) +
-  geom_sf(data = studyAreaSBW, fill = cols[5], colour = cols[5], alpha = alpha) +
+  geom_sf(data = mpb_sf, fill = cols[4], colour = cols[4], alpha = alpha) +
+  geom_sf(data = sbw_sf, fill = cols[5], colour = cols[5], alpha = alpha) +
   geom_sf(data = ria_wb, fill = cols[3], colour = cols[3], alpha = alpha) +
   geom_sf(data = metaHerds, fill = cols[2], colour = cols[2], alpha = alpha)# +
   # scale_fill_manual(name = "Study Area", values = cols,
